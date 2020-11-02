@@ -3,10 +3,10 @@
 /// Created 11/2/20
 ///
 
-using static Nexcel.Extensions.Controls;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using System;
+using static Nexcel.Extensions.Controls;
 
 namespace Nexcel
 {
@@ -54,7 +54,7 @@ namespace Nexcel
             }
             var tp = new TabPage(name);
             // do some init
-            var newSheetIndex = sheetTabControl.TabPages.Count == 0 ? 0 :
+            var newSheetIndex = sheetTabControl.TabCount == 0 ? 0 :
                 sheetComboBox.SelectedIndex + addSheetIndexComboBox.SelectedIndex;
             sheetTabControl.TabPages.Insert(newSheetIndex, tp);
             RefreshSheetInfo(newSheetIndex);
@@ -91,15 +91,20 @@ namespace Nexcel
         }
 
         private void deleteSheetButton_Click(object sender, EventArgs e) {
-            if (sheetTabControl.TabPages.Count > 0) {
-                sheetTabControl.TabPages.RemoveAt(sheetTabControl.SelectedIndex);
-                RefreshSheetInfo(sheetTabControl.SelectedIndex);
-            }
-            if (sheetTabControl.TabPages.Count == 0) {
-                addSheetIndexComboBox.SelectedIndex = 0;
-                deleteSheetButton.Enabled = false;
-                if (string.IsNullOrEmpty(addSheetTextBox.Text)) {
-                    addSheetTextBox.Text = FirstSheetName;
+            if (sheetTabControl.TabCount > 0) {
+                var res = MessageBox.Show($"Are you sure you want to delete \"{sheetTabControl.SelectedTab.Text}\"?",
+                                          "Warning",
+                                          MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes) {
+                    sheetTabControl.TabPages.RemoveAt(sheetTabControl.SelectedIndex);
+                    RefreshSheetInfo(sheetTabControl.SelectedIndex);
+                    if (sheetTabControl.TabCount == 0) {
+                        addSheetIndexComboBox.SelectedIndex = 0;
+                        deleteSheetButton.Enabled = false;
+                        if (string.IsNullOrEmpty(addSheetTextBox.Text)) {
+                            addSheetTextBox.Text = FirstSheetName;
+                        }
+                    }
                 }
             }
         }

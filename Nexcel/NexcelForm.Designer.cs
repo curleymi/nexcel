@@ -108,7 +108,7 @@
             // addSheetButton
             // 
             this.addSheetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addSheetButton.Location = new System.Drawing.Point(320, 409);
+            this.addSheetButton.Location = new System.Drawing.Point(289, 409);
             this.addSheetButton.Name = "addSheetButton";
             this.addSheetButton.Size = new System.Drawing.Size(95, 32);
             this.addSheetButton.TabIndex = 5;
@@ -121,7 +121,7 @@
             this.addSheetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addSheetTextBox.Location = new System.Drawing.Point(12, 412);
             this.addSheetTextBox.Name = "addSheetTextBox";
-            this.addSheetTextBox.Size = new System.Drawing.Size(302, 27);
+            this.addSheetTextBox.Size = new System.Drawing.Size(271, 27);
             this.addSheetTextBox.TabIndex = 6;
             // 
             // addSheetIndexComboBox
@@ -132,7 +132,7 @@
             this.addSheetIndexComboBox.Items.AddRange(new object[] {
             "Before",
             "After"});
-            this.addSheetIndexComboBox.Location = new System.Drawing.Point(421, 412);
+            this.addSheetIndexComboBox.Location = new System.Drawing.Point(390, 412);
             this.addSheetIndexComboBox.Name = "addSheetIndexComboBox";
             this.addSheetIndexComboBox.Size = new System.Drawing.Size(72, 28);
             this.addSheetIndexComboBox.TabIndex = 7;
@@ -142,7 +142,7 @@
             this.sheetComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.sheetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sheetComboBox.FormattingEnabled = true;
-            this.sheetComboBox.Location = new System.Drawing.Point(499, 412);
+            this.sheetComboBox.Location = new System.Drawing.Point(468, 412);
             this.sheetComboBox.Name = "sheetComboBox";
             this.sheetComboBox.Size = new System.Drawing.Size(192, 28);
             this.sheetComboBox.TabIndex = 8;
@@ -150,11 +150,11 @@
             // deleteSheetButton
             // 
             this.deleteSheetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteSheetButton.Location = new System.Drawing.Point(758, 409);
+            this.deleteSheetButton.Location = new System.Drawing.Point(704, 409);
             this.deleteSheetButton.Name = "deleteSheetButton";
-            this.deleteSheetButton.Size = new System.Drawing.Size(112, 32);
+            this.deleteSheetButton.Size = new System.Drawing.Size(166, 32);
             this.deleteSheetButton.TabIndex = 9;
-            this.deleteSheetButton.Text = "Delete Sheet";
+            this.deleteSheetButton.Text = "Delete Current Sheet";
             this.deleteSheetButton.UseVisualStyleBackColor = true;
             this.deleteSheetButton.Click += new System.EventHandler(this.deleteSheetButton_Click);
             // 
