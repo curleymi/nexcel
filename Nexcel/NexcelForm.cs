@@ -22,6 +22,7 @@ namespace Nexcel
             addSheetIndexComboBox.SelectedIndex = 0;
             HandleCreated += ThreadSafeCreateFirstSheetHandler;
             sheetTabControl.SelectedIndexChanged += (s, e) => sheetComboBox.SelectedIndex = sheetTabControl.SelectedIndex;
+            sheetTabControl.DoubleClick += (s, e) => RenameSheet();
         }
 
         private void ThreadSafeCreateFirstSheetHandler(object sender, EventArgs e) {
@@ -49,17 +50,26 @@ namespace Nexcel
                 return;
             }
             if (sheetTabControl.TabPages().Any(tp => tp.Text.Equals(name))) {
-                // todo: display error
+                MessageBox.Show($"There already exists a page named \"{name}\".", "Error", MessageBoxButtons.OK);
                 return;
             }
             var tp = new TabPage(name);
-            // do some init
+            // do some cells init
             var newSheetIndex = sheetTabControl.TabCount == 0 ? 0 :
                 sheetComboBox.SelectedIndex + addSheetIndexComboBox.SelectedIndex;
             sheetTabControl.TabPages.Insert(newSheetIndex, tp);
             RefreshSheetInfo(newSheetIndex);
             deleteSheetButton.Enabled = true;
             addSheetTextBox.Clear();
+        }
+
+        private void RenameSheet() {
+            var name = InputBox.Show(this, "Rename Sheet", $"Enter a new name for \"{sheetTabControl.SelectedTab.Text}\".");
+            if (!string.IsNullOrEmpty(name) && !sheetTabControl.TabPages().Any(tp => tp.Text.Equals(name))) {
+                // rename all cell references
+                sheetTabControl.SelectedTab.Text = name;
+                RefreshSheetInfo(sheetTabControl.SelectedIndex);
+            }
         }
 
         private void decreaseSheetIndexButton_Click(object sender, EventArgs e) {
